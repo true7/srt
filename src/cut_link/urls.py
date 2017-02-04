@@ -17,10 +17,10 @@ from django.conf.urls import url
 
 from .views import (
     HomeView,
-    CutRedirectView,
+    URLRedirectView,
 )
 
 urlpatterns = [
-    url(r'^(?P<shortlink>[\w-]+)/$', CutRedirectView.as_view(), name='cut_redirect_class'),
+    url(r'^(?P<shortlink>[\w-]+)/$', URLRedirectView.as_view(), name='short'),
     url(r'^$', HomeView.as_view(), name='home'),
 ]

@@ -1,8 +1,11 @@
 from django.db import models
 from django.conf import settings
+from django_hosts.resolvers import reverse
 
 from .utils import create_shortlink
+from .validators import validate_url
 
+PARENT_HOST = getattr(settings, "PARENT_HOST", 'cut.com')
 SHORTLINK_MAX = getattr(settings, "SHORTLINK_MAX", 15)
 
 
@@ -30,11 +33,11 @@ class CutURLManager(models.Manager):
 
 
 class CutURL(models.Model):
-    url = models.CharField(max_length=220, )
+    url = models.CharField(max_length=220, validators=[validate_url, ])
     shortlink = models.CharField(max_length=SHORTLINK_MAX, unique=True, blank=True)
-    timestamp = models.DateTimeField(auto_now=True)
-    updated = models.DateTimeField(auto_now_add=True)
+    pub_date = models.DateField(auto_now=True)
     active = models.BooleanField(default=True)
+
     objects = CutURLManager()
 
     def save(self, *args, **kwargs):
@@ -44,3 +47,6 @@ class CutURL(models.Model):
 
     def __str__(self):
         return str(self.url)
+
+    def get_short_url(self):
+        return reverse('cut:short', kwargs={'shortlink': self.shortlink}, host='www', scheme='http', port='8000')

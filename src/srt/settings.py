@@ -59,7 +59,8 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'srt.urls'
 ROOT_HOSTCONF = 'cut_link.hosts'
 DEFAULT_HOST = 'www'
-DEFAULT_REDIRECT_URL = 'http://www.cut.com:8000'
+DEFAULT_REDIRECT_URL = 'http://www.cut.com:8000/'
+PARENT_HOST = 'cut.com'
 
 TEMPLATES = [
     {

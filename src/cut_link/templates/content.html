@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block main %}
+<div class="container">
+    <div class="row">
+        <div class="text-center col-sm-12">
+            <h1>{{ title }}</h1>
+            <h1>{{ obj.url }}</h1>
+            <h1><a href=" {{ obj.url }}">{{ obj.get_short_url }}</a></h1>
+            <h5>{{ created }}</h5>
+            <h1>{% if co %}Count this month: {{ co }}{% endif %}</h1>
+            <h1>{% if co %}Month: {{ obj.pub_date }}{% endif %}</h1>
+
+            <form action="." method="POST"> {% csrf_token %}
+                {{ form.as_p }}
+                <!--<input name="url" type="text" placeholder="Long URL" />-->
+                <input type="submit" value="Cut the URL" class="btn btn-primary"/>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

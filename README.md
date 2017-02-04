@@ -1,2 +1,2 @@
 # CUT LINK
-Application for cut links.
+Application for cutting links.
