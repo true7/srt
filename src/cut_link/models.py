@@ -43,10 +43,12 @@ class CutURL(models.Model):
     def save(self, *args, **kwargs):
         if not self.shortlink:
             self.shortlink = create_shortlink(self)
+        if not self.url.startswith('http'):
+            self.url = 'http://' + self.url
         super(CutURL, self).save(*args, **kwargs)
 
     def __str__(self):
         return str(self.url)
 
     def get_short_url(self):
-        return reverse('cut:short', kwargs={'shortlink': self.shortlink}, host='www', scheme='http', port='8000')
+        return reverse('cut:short', kwargs={'shortlink': self.shortlink}, host='www', scheme='https', port='8000')

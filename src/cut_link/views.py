@@ -13,7 +13,7 @@ class HomeView(View):
     def get(self, request, *args, **kwargs):
         form = URLForm()
         context = {
-            'title': 'Cut URL',
+            'title': 'Cut your URL',
             'form': form,
         }
         return render(request, 'content.html', context=context)
@@ -26,7 +26,7 @@ class HomeView(View):
             obj, created = CutURL.objects.get_or_create(url=url)
             context = {
                 'co': co,
-                'title': 'Cut URL',
+                'title': 'Cut your URL',
                 'form': form,
                 'obj': obj,
             }
@@ -34,7 +34,7 @@ class HomeView(View):
                 context['created'] = 'Already exists in DataBase.'
         else:
             context = {
-                'title': 'Cut URL',
+                'title': 'Cut your URL',
                 'form': form,
             }
         return render(request, 'content.html', context=context)

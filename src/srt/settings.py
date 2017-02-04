@@ -42,7 +42,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cut_link',
     'django_hosts',
+    'crispy_forms',
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 MIDDLEWARE = [
     'django_hosts.middleware.HostsRequestMiddleware',
@@ -59,7 +62,7 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'srt.urls'
 ROOT_HOSTCONF = 'cut_link.hosts'
 DEFAULT_HOST = 'www'
-DEFAULT_REDIRECT_URL = 'http://www.cut.com:8000/'
+DEFAULT_REDIRECT_URL = 'https://www.cut.com:8000/'
 PARENT_HOST = 'cut.com'
 
 TEMPLATES = [
