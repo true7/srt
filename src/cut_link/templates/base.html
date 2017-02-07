@@ -38,27 +38,59 @@
     {% endblock cut_url %}
   </div><!--End Slide 1-->
 
-
-
-
-
-
   <div class="slide" id="slide2" data-slide="2" data-stellar-background-ratio="0.5">
     <div class="wrapper">
-    <p>HELLO HERE YOU ARE</p>
+    <div id="chartdiv"></div>
     </div>
 
-    <span class="slideno">Statistics</span>
-    <span class="parallaxbg">Chart</span>
+    <span class="slideno">Count of unique URLs per month</span>
     <span class="like_footer">{{ test|safe }} {{ test_ip }}</span>
   </div><!--End Slide 2-->
 
+<!-- Resources -->
+<script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+<script src="https://www.amcharts.com/lib/3/serial.js"></script>
+<script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
+<link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+<script src="https://www.amcharts.com/lib/3/themes/none.js"></script>
 
+<!-- Chart code -->
+<script>
+var chart = AmCharts.makeChart("chartdiv", {
+    "theme": "none",
+    "type": "serial",
+  "startDuration": 2,
+    "dataProvider": {{json_data|safe}},
+    "valueAxes": [{
+        "position": "left",
+        "title": "Count"
+    }],
+    "graphs": [{
+        "balloonText": "[[category]]: <b>[[value]]</b>",
+        "fillAlphas": 1,
+        "lineAlpha": 0.1,
+        "type": "column",
+        "valueField": "count"
+    }],
+    "depth3D": 20,
+  "angle": 30,
+    "chartCursor": {
+        "categoryBalloonEnabled": false,
+        "cursorAlpha": 0,
+        "zoomable": false
+    },
+    "categoryField": "month",
+    "fontSize": 24,
+    "categoryAxis": {
+        "gridPosition": "start",
+        "labelRotation": 90
+    },
+    "export": {
+      "enabled": true
+     }
 
-
-
-
-
+});
+</script>
 
 </body>
 </html>

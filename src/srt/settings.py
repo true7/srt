@@ -25,9 +25,12 @@ SECRET_KEY = 'eqymj5)$k(^d2g963@ic2im@#q)j2oa9og!za(be&3j_b_pp!1'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+YEAR_MONTH_FORMAT = 'F Y'
+
 ALLOWED_HOSTS = ['cut.com',
                  'www.cut.com',
                  'live.cut.com',
+                 'localhost'
                  ]
 
 
@@ -43,8 +46,6 @@ INSTALLED_APPS = [
     'cut_link',
     'django_hosts',
 ]
-
-CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 MIDDLEWARE = [
     'django_hosts.middleware.HostsRequestMiddleware',
