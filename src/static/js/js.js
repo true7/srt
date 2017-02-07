@@ -1,6 +1,5 @@
 jQuery(document).ready(function ($) {
 
-
     //initialise Stellar.js
     $(window).stellar();
 
@@ -8,7 +7,6 @@ jQuery(document).ready(function ($) {
     var links = $('.navigation').find('li');
     slide = $('.slide');
     button = $('.button');
-    my_btn = $('.my_btn');
     mywindow = $(window);
     htmlbody = $('html,body');
 
@@ -65,12 +63,9 @@ jQuery(document).ready(function ($) {
         goToByScroll(dataslide);
 
     });
-    my_btn.click(function (e) {
-        e.preventDefault();
-        dataslide = $(this).attr('data-slide');
-        goToByScroll(dataslide);
 
-    });
+});
 
-
+$(document).ready(function(){
+    var clipboard = new Clipboard('.clipboard');
 });

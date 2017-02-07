@@ -16,20 +16,22 @@
       <h1 id='errors'>{{ form.url.errors }}</h1>
     </form>
   </div><!-- /.col-sm-6 -->
-</div>
 
-
-
-
-
-
-<div class="col-sm-4 col-sm-offset-4">
-{% if obj.url %}
-  <p id='shotlink'>Your short URL:</p>
-  <input type="text" class="form-control classname" value="{{ obj.get_short_url }}" readonly />
-  <p id='created'>{{ created }}</p>
+  <div class="col-sm-4 col-sm-offset-4">
+  {% if obj.url %}
+    <p id='shotlink'>Your short URL:</p>
+    <div class="input-group">
+      <input type="text" id='foo' class="form-control classname" value="{{ obj.get_short_url }}" readonly>
+      <span class="input-group-btn">
+        <button class="btn btn-primary clipboard" type="button" data-clipboard-target="#foo">Copy</button>
+      </span>
+    </div>
+    <p id='created'>{{ created }}</p>
   {% endif %}
+  </div>
 </div>
+
+
 
 
 
@@ -40,6 +42,6 @@
 
 
 
-<h1 class='button btn btn-success btn-lg' data-slide="2">Browse statistics >></h1>
+  <div class='button btn btn-success btn-lg' data-slide="2">Browse statistics >></div>
 
 {% endblock cut_url %}

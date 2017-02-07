@@ -23,6 +23,7 @@
   <script type="text/javascript" src='{% static "js/jquery.stellar.min.js" %}'></script>
   <script type="text/javascript" src='{% static "js/waypoints.min.js" %}'></script>
   <script type="text/javascript" src='{% static "js/jquery.easing.1.3.js" %}'></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.16/clipboard.min.js"></script>
 
 </head>
 <body>
@@ -32,13 +33,14 @@
     <li data-slide="2">Statistics</li>
   </ul>
 
-
   <div class="slide" id="slide1" data-slide="1" data-stellar-background-ratio="0.5">
-
     {% block cut_url %}
     {% endblock cut_url %}
-
   </div><!--End Slide 1-->
+
+
+
+
 
 
   <div class="slide" id="slide2" data-slide="2" data-stellar-background-ratio="0.5">
@@ -50,6 +52,13 @@
     <span class="parallaxbg">Chart</span>
     <span class="like_footer">{{ test|safe }} {{ test_ip }}</span>
   </div><!--End Slide 2-->
+
+
+
+
+
+
+
 
 </body>
 </html>
