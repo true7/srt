@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cut_link',
     'django_hosts',
-    'crispy_forms',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
@@ -62,7 +61,7 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'srt.urls'
 ROOT_HOSTCONF = 'cut_link.hosts'
 DEFAULT_HOST = 'www'
-DEFAULT_REDIRECT_URL = 'https://www.cut.com:8000/'
+DEFAULT_REDIRECT_URL = 'http://www.cut.com:8000/'
 PARENT_HOST = 'cut.com'
 
 TEMPLATES = [
@@ -78,6 +77,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'cut_link.context_processors.custom_proc',
             ],
         },
     },
@@ -137,3 +137,13 @@ STATIC_URL = '/static/'
 
 SHORTLINK_MAX = 15
 SHORTLINK_MIN = 6
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+    #'/var/www/static/',
+]
+
+STATIC_ROOT = os.path.join(BASE_DIR, "static_cdn")
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media_cdn")

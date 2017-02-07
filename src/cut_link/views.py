@@ -4,6 +4,7 @@ from django.shortcuts import (
 )
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views import View
+from django.template import RequestContext
 
 from .models import CutURL
 from .forms import URLForm
@@ -23,6 +24,8 @@ class HomeView(View):
         form = URLForm(request.POST)
         if form.is_valid():
             url = form.cleaned_data['url']
+            if not url.startswith('http'):
+            	url = 'http://' + url
             obj, created = CutURL.objects.get_or_create(url=url)
             context = {
                 'co': co,
@@ -31,7 +34,7 @@ class HomeView(View):
                 'obj': obj,
             }
             if not created:
-                context['created'] = 'Already exists in DataBase.'
+                context['created'] = '(Already exists in DataBase)'
         else:
             context = {
                 'title': 'Cut your URL',
