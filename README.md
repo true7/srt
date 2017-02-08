@@ -1,3 +1,6 @@
+# LOCALHOST VERSION
+To browse a production version go to brunch 'heroku'.
+
 # CUT LINK
 Application for cutting links.
 
