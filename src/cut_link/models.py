@@ -33,7 +33,7 @@ class CutURLManager(models.Manager):
 
 
 class CutURL(models.Model):
-    url = models.CharField(max_length=220, validators=[validate_url, ])
+    url = models.CharField(max_length=1000, validators=[validate_url, ])
     shortlink = models.CharField(max_length=SHORTLINK_MAX, unique=True, blank=True)
     pub_date = models.DateField(auto_now=True)
     active = models.BooleanField(default=True)
